@@ -71,9 +71,8 @@ void USARTInit(uint16_t baud_rate)
 
 void USARTWriteChar(char ch)
 {
-  while(!PIR1bits.TXIF);
-
-  TXREG=ch;
+    TXREG=ch;
+    while(!TXSTAbits.TRMT);
 }
 
 void USARTWriteString(char *str, uint8_t len)

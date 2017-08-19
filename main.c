@@ -38,7 +38,6 @@ void main()
 /*  Test codes here */
     rs485Tx();
     USARTWriteLine("Serial OK!", 10);
-    _delay(500);
     rs485Rx();
     
 

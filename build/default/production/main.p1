@@ -6,10 +6,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _rs485Tx `(v ~T0 @X0 0 ef ]
 "45 uart.h
 [v _USARTWriteLine `(v ~T0 @X0 0 ef2`*uc`uc ]
-[v F1552 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h
-[v __delay `JF1552 ~T0 @X0 0 e ]
-[p i __delay ]
 "92 sysFunc.h
 [v _rs485Rx `(v ~T0 @X0 0 ef ]
 "96
@@ -1593,33 +1589,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 40: USARTWriteLine("Serial OK!", 10);
 "40
 [e ( _USARTWriteLine (2 , -> :s 1C `*uc -> -> 10 `i `uc ]
-[; ;main.c: 41: _delay(500);
+[; ;main.c: 41: rs485Rx();
 "41
-[e ( __delay (1 -> -> -> 500 `i `l `ul ]
-[; ;main.c: 42: rs485Rx();
-"42
 [e ( _rs485Rx ..  ]
-[; ;main.c: 47: while(1)
-"47
+[; ;main.c: 46: while(1)
+"46
 [e :U 139 ]
-[; ;main.c: 48: {
-"48
+[; ;main.c: 47: {
+"47
 {
-[; ;main.c: 49: checkCommandRx();
-"49
+[; ;main.c: 48: checkCommandRx();
+"48
 [e ( _checkCommandRx ..  ]
-[; ;main.c: 50: scanKeypad();
-"50
+[; ;main.c: 49: scanKeypad();
+"49
 [e ( _scanKeypad ..  ]
-"51
+"50
 }
 [e :U 138 ]
-"47
+"46
 [e $U 139  ]
 [e :U 140 ]
+[; ;main.c: 50: }
 [; ;main.c: 51: }
-[; ;main.c: 52: }
-"52
+"51
 [e :UE 137 ]
 }
 [a 1C 83 101 114 105 97 108 32 79 75 33 0 ]
