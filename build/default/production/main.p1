@@ -1,17 +1,19 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"94 sysFunc.h
+"104 sysFunc.h
 [v _controllerInit `(v ~T0 @X0 0 ef ]
-"93
+"103
 [v _rs485Tx `(v ~T0 @X0 0 ef ]
 "45 uart.h
 [v _USARTWriteLine `(v ~T0 @X0 0 ef2`*uc`uc ]
-"92 sysFunc.h
+"102 sysFunc.h
 [v _rs485Rx `(v ~T0 @X0 0 ef ]
-"96
+"106
 [v _checkCommandRx `(v ~T0 @X0 0 ef ]
-"95
+"105
 [v _scanKeypad `(uc ~T0 @X0 0 ef ]
+"85 led_control.h
+[v _light_led `(v ~T0 @X0 0 ef2`ui`uc ]
 "8 main.c
 [p x FOSC=INTRC_NOCLKOUT ]
 "9
@@ -1496,124 +1498,185 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 50: void USARTGotoNewLine();
 [; ;uart.h: 51: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;uart.h: 52: void USARTFlushBuffer();
-[; ;keypad4x4.h: 54: enum button { BUTTON_0 = 0,
-[; ;keypad4x4.h: 55: BUTTON_1,
-[; ;keypad4x4.h: 56: BUTTON_2,
-[; ;keypad4x4.h: 57: BUTTON_3,
-[; ;keypad4x4.h: 58: BUTTON_4,
-[; ;keypad4x4.h: 59: BUTTON_5,
-[; ;keypad4x4.h: 60: BUTTON_6,
-[; ;keypad4x4.h: 61: BUTTON_7,
-[; ;keypad4x4.h: 62: BUTTON_8,
-[; ;keypad4x4.h: 63: BUTTON_9,
-[; ;keypad4x4.h: 64: BUTTON_10,
-[; ;keypad4x4.h: 65: BUTTON_11,
-[; ;keypad4x4.h: 66: BUTTON_12,
-[; ;keypad4x4.h: 67: BUTTON_13,
-[; ;keypad4x4.h: 68: BUTTON_14,
-[; ;keypad4x4.h: 69: BUTTON_15,
-[; ;keypad4x4.h: 70: BUTTON_16,
-[; ;keypad4x4.h: 71: };
-[; ;keypad4x4.h: 73: typedef struct {
-[; ;keypad4x4.h: 74: char keyPressIndicator:1;
-[; ;keypad4x4.h: 75: char keyPressSound:1;
-[; ;keypad4x4.h: 76: char keyLock:1;
-[; ;keypad4x4.h: 77: char keyPressed;
-[; ;keypad4x4.h: 78: }keypadState_t;
-[; ;keypad4x4.h: 80: void initKeypad(void);
-[; ;keypad4x4.h: 81: void ackKeyPress();
-[; ;keypad4x4.h: 82: void getKey(keypadState_t *keypadState);
-[; ;keypad4x4.h: 83: char buttonPressedIndicator();
-[; ;sysFunc.h: 40: typedef struct
-[; ;sysFunc.h: 41: {
-[; ;sysFunc.h: 42: unsigned int bit0:1;
-[; ;sysFunc.h: 43: unsigned int bit1:1;
-[; ;sysFunc.h: 44: unsigned int bit2:1;
-[; ;sysFunc.h: 45: unsigned int bit3:1;
-[; ;sysFunc.h: 46: unsigned int bit4:1;
-[; ;sysFunc.h: 47: unsigned int bit5:1;
-[; ;sysFunc.h: 48: unsigned int bit6:1;
-[; ;sysFunc.h: 49: unsigned int bit7:1;
-[; ;sysFunc.h: 50: } _io_reg;
-[; ;sysFunc.h: 59: typedef struct {
-[; ;sysFunc.h: 60: uint8_t startByte;
-[; ;sysFunc.h: 61: uint8_t panelId;
-[; ;sysFunc.h: 62: uint8_t commandType:7;
-[; ;sysFunc.h: 63: uint8_t r_w:1;
-[; ;sysFunc.h: 64: uint16_t param;
-[; ;sysFunc.h: 65: uint8_t endByte;
-[; ;sysFunc.h: 66: }command_t;
-[; ;sysFunc.h: 68: typedef enum{
-[; ;sysFunc.h: 69: ERR_OK = 0,
-[; ;sysFunc.h: 70: ERR_ID,
-[; ;sysFunc.h: 71: ERR_INC_FRM,
-[; ;sysFunc.h: 72: ERR_STRT,
-[; ;sysFunc.h: 73: ERR_END
-[; ;sysFunc.h: 74: }err_t;
-[; ;sysFunc.h: 76: enum commandList{
-[; ;sysFunc.h: 77: COMMAND_NULL = 0,
-[; ;sysFunc.h: 78: SEND_BUTTON,
-[; ;sysFunc.h: 79: ACK_BUTTON,
-[; ;sysFunc.h: 80: RESET_KEYPAD
-[; ;sysFunc.h: 81: };
-"83 sysFunc.h
+[; ;Keypad4x4.h: 54: enum button { BUTTON_0 = 0,
+[; ;Keypad4x4.h: 55: BUTTON_1,
+[; ;Keypad4x4.h: 56: BUTTON_2,
+[; ;Keypad4x4.h: 57: BUTTON_3,
+[; ;Keypad4x4.h: 58: BUTTON_4,
+[; ;Keypad4x4.h: 59: BUTTON_5,
+[; ;Keypad4x4.h: 60: BUTTON_6,
+[; ;Keypad4x4.h: 61: BUTTON_7,
+[; ;Keypad4x4.h: 62: BUTTON_8,
+[; ;Keypad4x4.h: 63: BUTTON_9,
+[; ;Keypad4x4.h: 64: BUTTON_10,
+[; ;Keypad4x4.h: 65: BUTTON_11,
+[; ;Keypad4x4.h: 66: BUTTON_12,
+[; ;Keypad4x4.h: 67: BUTTON_13,
+[; ;Keypad4x4.h: 68: BUTTON_14,
+[; ;Keypad4x4.h: 69: BUTTON_15,
+[; ;Keypad4x4.h: 70: BUTTON_16,
+[; ;Keypad4x4.h: 71: };
+[; ;Keypad4x4.h: 73: typedef struct {
+[; ;Keypad4x4.h: 74: char keyPressIndicator:1;
+[; ;Keypad4x4.h: 75: char keyPressSound:1;
+[; ;Keypad4x4.h: 76: char keyLock:1;
+[; ;Keypad4x4.h: 77: char keyPressed;
+[; ;Keypad4x4.h: 78: }keypadState_t;
+[; ;Keypad4x4.h: 80: void initKeypad(void);
+[; ;Keypad4x4.h: 81: void ackKeyPress();
+[; ;Keypad4x4.h: 82: void getKey(keypadState_t *keypadState);
+[; ;Keypad4x4.h: 83: char buttonPressedIndicator();
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;sysFunc.h: 45: typedef struct
+[; ;sysFunc.h: 46: {
+[; ;sysFunc.h: 47: unsigned int bit0:1;
+[; ;sysFunc.h: 48: unsigned int bit1:1;
+[; ;sysFunc.h: 49: unsigned int bit2:1;
+[; ;sysFunc.h: 50: unsigned int bit3:1;
+[; ;sysFunc.h: 51: unsigned int bit4:1;
+[; ;sysFunc.h: 52: unsigned int bit5:1;
+[; ;sysFunc.h: 53: unsigned int bit6:1;
+[; ;sysFunc.h: 54: unsigned int bit7:1;
+[; ;sysFunc.h: 55: } _io_reg;
+"64 sysFunc.h
+[v _status_register `uc ~T0 @X0 1 e ]
+[; ;sysFunc.h: 64: uint8_t status_register;
+[; ;sysFunc.h: 68: typedef struct
+[; ;sysFunc.h: 69: {
+[; ;sysFunc.h: 70: uint8_t startByte;
+[; ;sysFunc.h: 71: uint8_t panelId;
+[; ;sysFunc.h: 72: uint8_t commandType:7;
+[; ;sysFunc.h: 73: uint8_t r_w:1;
+[; ;sysFunc.h: 74: uint16_t param;
+[; ;sysFunc.h: 75: uint8_t endByte;
+[; ;sysFunc.h: 76: }command_t;
+[; ;sysFunc.h: 78: typedef enum{
+[; ;sysFunc.h: 79: ERR_OK = 0,
+[; ;sysFunc.h: 80: ERR_ID,
+[; ;sysFunc.h: 81: ERR_INC_FRM,
+[; ;sysFunc.h: 82: ERR_STRT,
+[; ;sysFunc.h: 83: ERR_END
+[; ;sysFunc.h: 84: }err_t;
+[; ;sysFunc.h: 86: enum commandList{
+[; ;sysFunc.h: 87: COMMAND_NULL = 0,
+[; ;sysFunc.h: 88: SEND_BUTTON,
+[; ;sysFunc.h: 89: ACK_BUTTON,
+[; ;sysFunc.h: 90: RESET_KEYPAD
+[; ;sysFunc.h: 91: };
+"93
 [v _rxCount `uc ~T0 @X0 1 e ]
-[; ;sysFunc.h: 83: uint8_t rxCount;
-[; ;sysFunc.h: 85: void gpioInit();
-[; ;sysFunc.h: 86: void clockInit();
-[; ;sysFunc.h: 87: err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
-[; ;sysFunc.h: 88: void sendButtonInfo(uint8_t button);
-[; ;sysFunc.h: 89: void runProtocol(command_t *commandRecv);
-[; ;sysFunc.h: 90: void ackButton();
-[; ;sysFunc.h: 91: void resetKeypad();
-[; ;sysFunc.h: 92: void rs485Rx();
-[; ;sysFunc.h: 93: void rs485Tx();
-[; ;sysFunc.h: 94: void controllerInit(void);
-[; ;sysFunc.h: 95: uint8_t scanKeypad();
-[; ;sysFunc.h: 96: void checkCommandRx();
+[; ;sysFunc.h: 93: uint8_t rxCount;
+[; ;sysFunc.h: 95: void gpioInit();
+[; ;sysFunc.h: 96: void clockInit();
+[; ;sysFunc.h: 97: err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
+[; ;sysFunc.h: 98: void sendButtonInfo(uint8_t button);
+[; ;sysFunc.h: 99: void runProtocol(command_t *commandRecv);
+[; ;sysFunc.h: 100: void ackButton(uint16_t valid_indicator);
+[; ;sysFunc.h: 101: void resetKeypad();
+[; ;sysFunc.h: 102: void rs485Rx();
+[; ;sysFunc.h: 103: void rs485Tx();
+[; ;sysFunc.h: 104: void controllerInit(void);
+[; ;sysFunc.h: 105: uint8_t scanKeypad();
+[; ;sysFunc.h: 106: void checkCommandRx();
+[; ;led_control.h: 38: typedef struct
+[; ;led_control.h: 39: {
+[; ;led_control.h: 40: uint16_t bit0:1;
+[; ;led_control.h: 41: uint16_t bit1:1;
+[; ;led_control.h: 42: uint16_t bit2:1;
+[; ;led_control.h: 43: uint16_t bit3:1;
+[; ;led_control.h: 44: uint16_t bit4:1;
+[; ;led_control.h: 45: uint16_t bit5:1;
+[; ;led_control.h: 46: uint16_t bit6:1;
+[; ;led_control.h: 47: uint16_t bit7:1;
+[; ;led_control.h: 48: uint16_t bit8:1;
+[; ;led_control.h: 49: uint16_t bit9:1;
+[; ;led_control.h: 50: uint16_t bit10:1;
+[; ;led_control.h: 51: uint16_t bit11:1;
+[; ;led_control.h: 52: uint16_t bit12:1;
+[; ;led_control.h: 53: uint16_t bit13:1;
+[; ;led_control.h: 54: uint16_t bit14:1;
+[; ;led_control.h: 55: uint16_t bit15:1;
+[; ;led_control.h: 56: } _io16_reg;
+"60 led_control.h
+[v _led_indication_reg `Vui ~T0 @X0 1 e ]
+[; ;led_control.h: 60: volatile uint16_t led_indication_reg;
+[; ;led_control.h: 84: void init_controller_led_pins();
+[; ;led_control.h: 85: void light_led(uint16_t led_register, uint8_t LED_EN);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"34 main.c
+"35 main.c
 [v _main `(v ~T0 @X0 1 ef ]
-"35
+"36
 {
-[; ;main.c: 34: void main()
-[; ;main.c: 35: {
+[; ;main.c: 35: void main()
+[; ;main.c: 36: {
 [e :U _main ]
 [f ]
-[; ;main.c: 36: controllerInit();
-"36
+[; ;main.c: 37: controllerInit();
+"37
 [e ( _controllerInit ..  ]
-[; ;main.c: 39: rs485Tx();
-"39
-[e ( _rs485Tx ..  ]
-[; ;main.c: 40: USARTWriteLine("Serial OK!", 10);
+[; ;main.c: 40: rs485Tx();
 "40
-[e ( _USARTWriteLine (2 , -> :s 1C `*uc -> -> 10 `i `uc ]
-[; ;main.c: 41: rs485Rx();
+[e ( _rs485Tx ..  ]
+[; ;main.c: 41: USARTWriteLine("Serial OK!", 10);
 "41
+[e ( _USARTWriteLine (2 , -> :s 1C `*uc -> -> 10 `i `uc ]
+[; ;main.c: 42: rs485Rx();
+"42
 [e ( _rs485Rx ..  ]
-[; ;main.c: 46: while(1)
-"46
-[e :U 139 ]
-[; ;main.c: 47: {
+[; ;main.c: 47: while(1)
 "47
-{
-[; ;main.c: 48: checkCommandRx();
+[e :U 141 ]
+[; ;main.c: 48: {
 "48
-[e ( _checkCommandRx ..  ]
-[; ;main.c: 49: scanKeypad();
+{
+[; ;main.c: 49: checkCommandRx();
 "49
-[e ( _scanKeypad ..  ]
+[e ( _checkCommandRx ..  ]
+[; ;main.c: 50: scanKeypad();
 "50
-}
-[e :U 138 ]
-"46
-[e $U 139  ]
-[e :U 140 ]
-[; ;main.c: 50: }
-[; ;main.c: 51: }
+[e ( _scanKeypad ..  ]
+[; ;main.c: 51: light_led(led_indication_reg, (status_register & 0x01));
 "51
-[e :UE 137 ]
+[e ( _light_led (2 , _led_indication_reg -> & -> _status_register `i -> 1 `i `uc ]
+"53
+}
+[e :U 140 ]
+"47
+[e $U 141  ]
+[e :U 142 ]
+[; ;main.c: 53: }
+[; ;main.c: 54: }
+"54
+[e :UE 139 ]
 }
 [a 1C 83 101 114 105 97 108 32 79 75 33 0 ]
 

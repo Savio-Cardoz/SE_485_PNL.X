@@ -1,22 +1,5 @@
 
-# 1 "main.c"
-
-
-# 8
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = ON
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+# 1 "led_control.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -2034,6 +2017,69 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
+typedef unsigned size_t;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
 typedef signed char int8_t;
 
@@ -2105,118 +2151,6 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-
-# 38 "uart.h"
-volatile char URBuff[12];
-volatile int8_t UQFront;
-volatile int8_t UQEnd;
-
-void USARTInit(uint16_t baud_rate);
-void USARTWriteChar(char ch);
-void USARTWriteString(char *str, uint8_t len);
-void USARTWriteLine(char *str, uint8_t len);
-void USARTWriteInt(int16_t val, int8_t field_length);
-void USARTHandleRxInt();
-char USARTReadData();
-uint8_t USARTDataAvailable();
-void USARTGotoNewLine();
-void USARTReadBuffer(char *buff,uint16_t len);
-void USARTFlushBuffer();
-
-# 54 "Keypad4x4.h"
-enum button { BUTTON_0 = 0,
-BUTTON_1,
-BUTTON_2,
-BUTTON_3,
-BUTTON_4,
-BUTTON_5,
-BUTTON_6,
-BUTTON_7,
-BUTTON_8,
-BUTTON_9,
-BUTTON_10,
-BUTTON_11,
-BUTTON_12,
-BUTTON_13,
-BUTTON_14,
-BUTTON_15,
-BUTTON_16,
-};
-
-typedef struct {
-char keyPressIndicator:1;
-char keyPressSound:1;
-char keyLock:1;
-char keyPressed;
-}keypadState_t;
-
-void initKeypad(void);
-void ackKeyPress();
-void getKey(keypadState_t *keypadState);
-char buttonPressedIndicator();
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
 
 # 45 "sysFunc.h"
 typedef struct
@@ -2305,24 +2239,27 @@ volatile uint16_t led_indication_reg;
 void init_controller_led_pins();
 void light_led(uint16_t led_register, uint8_t LED_EN);
 
-# 35 "main.c"
-void main()
+# 12 "led_control.c"
+void init_controller_led_pins()
 {
-controllerInit();
+TRISA &= 0xE0;
 
+}
 
-rs485Tx();
-USARTWriteLine("Serial OK!", 10);
-rs485Rx();
-
-
-
-
-while(1)
+void light_led(uint16_t led_register, uint8_t LED_EN)
 {
-checkCommandRx();
-scanKeypad();
-light_led(led_indication_reg, (status_register & 0x01));
+uint8_t i;
+if(LED_EN && led_register)
+{
+((volatile _io_reg*)&PORTA)->bit4 = 1;
+for(i = 0; i < 16; i++)
+{
+if(led_register & 0x0001)
+{
+PORTA = i;
+}
 
+led_register >> 1;
+}
 }
 }

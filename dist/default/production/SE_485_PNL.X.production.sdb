@@ -23,22 +23,22 @@ BUTTON_14 14
 BUTTON_15 15
 BUTTON_16 16
 ]
-"49 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
-[e E1653 . `uc
+"50 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+[e E1716 . `uc
 ERR_OK 0
 ERR_ID 1
 ERR_INC_FRM 2
 ERR_STRT 3
 ERR_END 4
 ]
-"73
-[e E1660 commandList `uc
+"74
+[e E1723 commandList `uc
 COMMAND_NULL 0
 SEND_BUTTON 1
 ACK_BUTTON 2
 RESET_KEYPAD 3
 ]
-"123
+"124
 [e E1559 button `uc
 BUTTON_0 0
 BUTTON_1 1
@@ -76,29 +76,31 @@ BUTTON_16 16
 [v _initKeypad initKeypad `(v  1 e 1 0 ]
 "30
 [v _getKey getKey `(v  1 e 1 0 ]
-"34 E:\Savio\Embedded Projects\SE_485_PNL.X\main.c
+"18 E:\Savio\Embedded Projects\SE_485_PNL.X\led_control.c
+[v _light_led light_led `(v  1 e 1 0 ]
+"35 E:\Savio\Embedded Projects\SE_485_PNL.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"18 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+"19 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
 [v _gpioInit gpioInit `(v  1 e 1 0 ]
-"31
+"32
 [v _rs485Tx rs485Tx `(v  1 e 1 0 ]
-"36
+"37
 [v _rs485Rx rs485Rx `(v  1 e 1 0 ]
-"48
-[v _sortRxFrame sortRxFrame `(E1653  1 e 1 0 ]
-"67
+"49
+[v _sortRxFrame sortRxFrame `(E1716  1 e 1 0 ]
+"68
 [v _runProtocol runProtocol `(v  1 e 1 0 ]
-"91
+"92
 [v _sendButtonInfo sendButtonInfo `(v  1 e 1 0 ]
-"106
+"107
 [v _ackButton ackButton `(v  1 e 1 0 ]
-"127
+"200
 [v _resetKeypad resetKeypad `(v  1 e 1 0 ]
-"148
+"223
 [v _controllerInit controllerInit `(v  1 e 1 0 ]
-"157
+"232
 [v _scanKeypad scanKeypad `(uc  1 e 1 0 ]
-"173
+"248
 [v _checkCommandRx checkCommandRx `(v  1 e 1 0 ]
 "31 E:\Savio\Embedded Projects\SE_485_PNL.X\uart.c
 [v _USARTInit USARTInit `(v  1 e 1 0 ]
@@ -116,9 +118,11 @@ BUTTON_16 16
 [v _USARTDataAvailable USARTDataAvailable `(uc  1 e 1 0 ]
 "205
 [v _USARTReadBuffer USARTReadBuffer `(v  1 e 1 0 ]
-"226 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f882.h
+"164 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f882.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"226
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S359 . 1 `uc 1 RC0 1 0 :1:0 
+[s S367 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -128,8 +132,8 @@ BUTTON_16 16
 `uc 1 RC7 1 0 :1:7 
 ]
 "305
-[u S368 . 1 `S359 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES368  1 e 1 @7 ]
+[u S376 . 1 `S367 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES376  1 e 1 @7 ]
 [s S165 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -147,7 +151,7 @@ BUTTON_16 16
 ]
 [u S179 . 1 `S165 1 . 1 0 `S174 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES179  1 e 1 @11 ]
-[s S515 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S577 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -156,8 +160,8 @@ BUTTON_16 16
 `uc 1 ADIF 1 0 :1:6 
 ]
 "472
-[u S523 . 1 `S515 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES523  1 e 1 @12 ]
+[u S585 . 1 `S577 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES585  1 e 1 @12 ]
 [s S102 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
@@ -184,7 +188,7 @@ BUTTON_16 16
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1059
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
-[s S311 . 1 `uc 1 PS 1 0 :3:0 
+[s S319 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -192,15 +196,17 @@ BUTTON_16 16
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1285
-[s S318 . 1 `uc 1 PS0 1 0 :1:0 
+[s S326 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S322 . 1 `S311 1 . 1 0 `S318 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES322  1 e 1 @129 ]
+[u S330 . 1 `S319 1 . 1 0 `S326 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES330  1 e 1 @129 ]
+"1335
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1397
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S337 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S345 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -210,8 +216,8 @@ BUTTON_16 16
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1476
-[u S346 . 1 `S337 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES346  1 e 1 @135 ]
+[u S354 . 1 `S345 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES354  1 e 1 @135 ]
 [s S146 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
@@ -252,20 +258,24 @@ BUTTON_16 16
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "8 E:\Savio\Embedded Projects\SE_485_PNL.X\Keypad4X4.c
 [v _buttonPressed buttonPressed `E1559  1 e 1 0 ]
-[s S298 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
+"60 E:\Savio\Embedded Projects\SE_485_PNL.X\led_control.h
+[v _led_indication_reg led_indication_reg `VEui  1 e 2 0 ]
+[s S306 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
 `uc 1 r_w 1 2 :1:7 
 `ui 1 param 2 3 `uc 1 endByte 1 5 ]
-"14 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
-[v _recvCommand recvCommand `S298  1 e 6 0 ]
+"15 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+[v _recvCommand recvCommand `S306  1 e 6 0 ]
 [s S37 . 2 `uc 1 keyPressIndicator 1 0 :1:0 
 `uc 1 keyPressSound 1 0 :1:1 
 `uc 1 keyLock 1 0 :1:2 
 `uc 1 keyPressed 1 1 ]
-"15
-[v _keypadState keypadState `S37  1 e 2 0 ]
 "16
+[v _keypadState keypadState `S37  1 e 2 0 ]
+"17
 [v _lastKey lastKey `uc  1 e 1 0 ]
-"83 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.h
+"64 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.h
+[v _status_register status_register `uc  1 e 1 0 ]
+"93
 [v _rxCount rxCount `uc  1 e 1 0 ]
 "38 E:\Savio\Embedded Projects\SE_485_PNL.X\uart.h
 [v _URBuff URBuff `VE[12]uc  1 e 12 0 ]
@@ -273,15 +283,15 @@ BUTTON_16 16
 [v _UQFront UQFront `VEc  1 e 1 0 ]
 "40
 [v _UQEnd UQEnd `VEc  1 e 1 0 ]
-"34 E:\Savio\Embedded Projects\SE_485_PNL.X\main.c
+"35 E:\Savio\Embedded Projects\SE_485_PNL.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"51
+"54
 } 0
-"157 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+"232 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
 [v _scanKeypad scanKeypad `(uc  1 e 1 0 ]
 {
-"171
+"246
 } 0
 "30 E:\Savio\Embedded Projects\SE_485_PNL.X\Keypad4X4.c
 [v _getKey getKey `(v  1 e 1 0 ]
@@ -297,20 +307,30 @@ BUTTON_16 16
 [v getKey@keypadState keypadState `*.4S37  1 a 1 2 ]
 "187
 } 0
-"148 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+"18 E:\Savio\Embedded Projects\SE_485_PNL.X\led_control.c
+[v _light_led light_led `(v  1 e 1 0 ]
+{
+"20
+[v light_led@i i `uc  1 a 1 4 ]
+"18
+[v light_led@led_register led_register `ui  1 p 2 0 ]
+[v light_led@LED_EN LED_EN `uc  1 p 1 2 ]
+"34
+} 0
+"223 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
 [v _controllerInit controllerInit `(v  1 e 1 0 ]
 {
-"155
+"230
 } 0
 "18 E:\Savio\Embedded Projects\SE_485_PNL.X\Keypad4X4.c
 [v _initKeypad initKeypad `(v  1 e 1 0 ]
 {
 "22
 } 0
-"18 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+"19 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
 [v _gpioInit gpioInit `(v  1 e 1 0 ]
 {
-"24
+"25
 } 0
 "31 E:\Savio\Embedded Projects\SE_485_PNL.X\uart.c
 [v _USARTInit USARTInit `(v  1 e 1 0 ]
@@ -318,82 +338,84 @@ BUTTON_16 16
 [v USARTInit@baud_rate baud_rate `ui  1 p 2 0 ]
 "70
 } 0
-"173 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
+"248 E:\Savio\Embedded Projects\SE_485_PNL.X\sysFunc.c
 [v _checkCommandRx checkCommandRx `(v  1 e 1 0 ]
 {
-"175
-[v checkCommandRx@buffer buffer `[6]uc  1 a 6 16 ]
-"184
+"250
+[v checkCommandRx@buffer buffer `[6]uc  1 a 6 17 ]
+"259
 } 0
-"48
-[v _sortRxFrame sortRxFrame `(E1653  1 e 1 0 ]
+"49
+[v _sortRxFrame sortRxFrame `(E1716  1 e 1 0 ]
 {
 [v sortRxFrame@rxBuf rxBuf `*.4uc  1 a 1 wreg ]
-[s S298 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
+[s S306 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
 `uc 1 r_w 1 2 :1:7 
 `ui 1 param 2 3 `uc 1 endByte 1 5 ]
-"51
-[v sortRxFrame@command command `*.4S298  1 a 1 5 ]
-"50
-[v sortRxFrame@err err `E1653  1 a 1 4 ]
-"48
-[v sortRxFrame@rxBuf rxBuf `*.4uc  1 a 1 wreg ]
-[v sortRxFrame@commandStruct commandStruct `*.4S298  1 p 1 0 ]
 "52
+[v sortRxFrame@command command `*.4S306  1 a 1 5 ]
+"51
+[v sortRxFrame@err err `E1716  1 a 1 4 ]
+"49
+[v sortRxFrame@rxBuf rxBuf `*.4uc  1 a 1 wreg ]
+[v sortRxFrame@commandStruct commandStruct `*.4S306  1 p 1 0 ]
+"53
 [v sortRxFrame@rxBuf rxBuf `*.4uc  1 a 1 3 ]
-"65
+"66
 } 0
-"67
+"68
 [v _runProtocol runProtocol `(v  1 e 1 0 ]
 {
-[s S298 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
+[s S306 . 6 `uc 1 startByte 1 0 `uc 1 panelId 1 1 `uc 1 commandType 1 2 :7:0 
 `uc 1 r_w 1 2 :1:7 
 `ui 1 param 2 3 `uc 1 endByte 1 5 ]
-[v runProtocol@commandRecv commandRecv `*.4S298  1 a 1 wreg ]
-"69
-[v runProtocol@command command `uc  1 a 1 13 ]
-"67
-[v runProtocol@commandRecv commandRecv `*.4S298  1 a 1 wreg ]
-"69
-"67
-[v runProtocol@commandRecv commandRecv `*.4S298  1 a 1 14 ]
-"89
+[v runProtocol@commandRecv commandRecv `*.4S306  1 a 1 wreg ]
+"70
+[v runProtocol@command command `uc  1 a 1 14 ]
+"68
+[v runProtocol@commandRecv commandRecv `*.4S306  1 a 1 wreg ]
+"70
+"68
+[v runProtocol@commandRecv commandRecv `*.4S306  1 a 1 15 ]
+"90
 } 0
-"91
+"92
 [v _sendButtonInfo sendButtonInfo `(v  1 e 1 0 ]
 {
 [v sendButtonInfo@button button `uc  1 a 1 wreg ]
-"93
-[v sendButtonInfo@buffer buffer `[6]uc  1 a 6 5 ]
-"91
-[v sendButtonInfo@button button `uc  1 a 1 wreg ]
 "94
+[v sendButtonInfo@buffer buffer `[6]uc  1 a 6 5 ]
+"92
+[v sendButtonInfo@button button `uc  1 a 1 wreg ]
+"95
 [v sendButtonInfo@button button `uc  1 a 1 11 ]
-"104
+"105
 } 0
-"127
+"200
 [v _resetKeypad resetKeypad `(v  1 e 1 0 ]
 {
-"129
+"202
 [v resetKeypad@buffer buffer `[6]uc  1 a 6 5 ]
-"146
+"221
 } 0
-"106
+"107
 [v _ackButton ackButton `(v  1 e 1 0 ]
 {
-"108
-[v ackButton@buffer buffer `[6]uc  1 a 6 5 ]
-"125
+"109
+[v ackButton@buffer buffer `[6]uc  1 a 6 7 ]
+"107
+[v ackButton@valid_indicator valid_indicator `ui  1 p 2 4 ]
+"198
 } 0
-"31
+"32
 [v _rs485Tx rs485Tx `(v  1 e 1 0 ]
 {
-"34
+"35
 } 0
-"36
+"37
 [v _rs485Rx rs485Rx `(v  1 e 1 0 ]
 {
-"39
+"40
 } 0
 "205 E:\Savio\Embedded Projects\SE_485_PNL.X\uart.c
 [v _USARTReadBuffer USARTReadBuffer `(v  1 e 1 0 ]

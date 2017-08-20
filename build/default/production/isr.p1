@@ -1449,53 +1449,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 192: extern unsigned char __resetbits;
 [; ;pic.h: 193: extern __bit __powerdown;
 [; ;pic.h: 194: extern __bit __timeout;
-[; ;sysFunc.h: 40: typedef struct
-[; ;sysFunc.h: 41: {
-[; ;sysFunc.h: 42: unsigned int bit0:1;
-[; ;sysFunc.h: 43: unsigned int bit1:1;
-[; ;sysFunc.h: 44: unsigned int bit2:1;
-[; ;sysFunc.h: 45: unsigned int bit3:1;
-[; ;sysFunc.h: 46: unsigned int bit4:1;
-[; ;sysFunc.h: 47: unsigned int bit5:1;
-[; ;sysFunc.h: 48: unsigned int bit6:1;
-[; ;sysFunc.h: 49: unsigned int bit7:1;
-[; ;sysFunc.h: 50: } _io_reg;
-[; ;sysFunc.h: 59: typedef struct {
-[; ;sysFunc.h: 60: uint8_t startByte;
-[; ;sysFunc.h: 61: uint8_t panelId;
-[; ;sysFunc.h: 62: uint8_t commandType:7;
-[; ;sysFunc.h: 63: uint8_t r_w:1;
-[; ;sysFunc.h: 64: uint16_t param;
-[; ;sysFunc.h: 65: uint8_t endByte;
-[; ;sysFunc.h: 66: }command_t;
-[; ;sysFunc.h: 68: typedef enum{
-[; ;sysFunc.h: 69: ERR_OK = 0,
-[; ;sysFunc.h: 70: ERR_ID,
-[; ;sysFunc.h: 71: ERR_INC_FRM,
-[; ;sysFunc.h: 72: ERR_STRT,
-[; ;sysFunc.h: 73: ERR_END
-[; ;sysFunc.h: 74: }err_t;
-[; ;sysFunc.h: 76: enum commandList{
-[; ;sysFunc.h: 77: COMMAND_NULL = 0,
-[; ;sysFunc.h: 78: SEND_BUTTON,
-[; ;sysFunc.h: 79: ACK_BUTTON,
-[; ;sysFunc.h: 80: RESET_KEYPAD
-[; ;sysFunc.h: 81: };
-"83 sysFunc.h
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;sysFunc.h: 45: typedef struct
+[; ;sysFunc.h: 46: {
+[; ;sysFunc.h: 47: unsigned int bit0:1;
+[; ;sysFunc.h: 48: unsigned int bit1:1;
+[; ;sysFunc.h: 49: unsigned int bit2:1;
+[; ;sysFunc.h: 50: unsigned int bit3:1;
+[; ;sysFunc.h: 51: unsigned int bit4:1;
+[; ;sysFunc.h: 52: unsigned int bit5:1;
+[; ;sysFunc.h: 53: unsigned int bit6:1;
+[; ;sysFunc.h: 54: unsigned int bit7:1;
+[; ;sysFunc.h: 55: } _io_reg;
+"64 sysFunc.h
+[v _status_register `uc ~T0 @X0 1 e ]
+[; ;sysFunc.h: 64: uint8_t status_register;
+[; ;sysFunc.h: 68: typedef struct
+[; ;sysFunc.h: 69: {
+[; ;sysFunc.h: 70: uint8_t startByte;
+[; ;sysFunc.h: 71: uint8_t panelId;
+[; ;sysFunc.h: 72: uint8_t commandType:7;
+[; ;sysFunc.h: 73: uint8_t r_w:1;
+[; ;sysFunc.h: 74: uint16_t param;
+[; ;sysFunc.h: 75: uint8_t endByte;
+[; ;sysFunc.h: 76: }command_t;
+[; ;sysFunc.h: 78: typedef enum{
+[; ;sysFunc.h: 79: ERR_OK = 0,
+[; ;sysFunc.h: 80: ERR_ID,
+[; ;sysFunc.h: 81: ERR_INC_FRM,
+[; ;sysFunc.h: 82: ERR_STRT,
+[; ;sysFunc.h: 83: ERR_END
+[; ;sysFunc.h: 84: }err_t;
+[; ;sysFunc.h: 86: enum commandList{
+[; ;sysFunc.h: 87: COMMAND_NULL = 0,
+[; ;sysFunc.h: 88: SEND_BUTTON,
+[; ;sysFunc.h: 89: ACK_BUTTON,
+[; ;sysFunc.h: 90: RESET_KEYPAD
+[; ;sysFunc.h: 91: };
+"93
 [v _rxCount `uc ~T0 @X0 1 e ]
-[; ;sysFunc.h: 83: uint8_t rxCount;
-[; ;sysFunc.h: 85: void gpioInit();
-[; ;sysFunc.h: 86: void clockInit();
-[; ;sysFunc.h: 87: err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
-[; ;sysFunc.h: 88: void sendButtonInfo(uint8_t button);
-[; ;sysFunc.h: 89: void runProtocol(command_t *commandRecv);
-[; ;sysFunc.h: 90: void ackButton();
-[; ;sysFunc.h: 91: void resetKeypad();
-[; ;sysFunc.h: 92: void rs485Rx();
-[; ;sysFunc.h: 93: void rs485Tx();
-[; ;sysFunc.h: 94: void controllerInit(void);
-[; ;sysFunc.h: 95: uint8_t scanKeypad();
-[; ;sysFunc.h: 96: void checkCommandRx();
+[; ;sysFunc.h: 93: uint8_t rxCount;
+[; ;sysFunc.h: 95: void gpioInit();
+[; ;sysFunc.h: 96: void clockInit();
+[; ;sysFunc.h: 97: err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
+[; ;sysFunc.h: 98: void sendButtonInfo(uint8_t button);
+[; ;sysFunc.h: 99: void runProtocol(command_t *commandRecv);
+[; ;sysFunc.h: 100: void ackButton(uint16_t valid_indicator);
+[; ;sysFunc.h: 101: void resetKeypad();
+[; ;sysFunc.h: 102: void rs485Rx();
+[; ;sysFunc.h: 103: void rs485Tx();
+[; ;sysFunc.h: 104: void controllerInit(void);
+[; ;sysFunc.h: 105: uint8_t scanKeypad();
+[; ;sysFunc.h: 106: void checkCommandRx();
 "38 uart.h
 [v _URBuff `Vuc ~T0 @X0 -> 12 `i e ]
 [; ;uart.h: 38: volatile char URBuff[12];
@@ -1517,9 +1551,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 51: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;uart.h: 52: void USARTFlushBuffer();
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-[v F1655 `(v ~T0 @X0 1 tf ]
+[v F1719 `(v ~T0 @X0 1 tf ]
 "6 isr.c
-[v _ISR `IF1655 ~T0 @X0 1 e ]
+[v _ISR `IF1719 ~T0 @X0 1 e ]
 "7
 {
 [; ;isr.c: 6: void interrupt ISR(void)
@@ -1528,7 +1562,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;isr.c: 8: if (PIR1bits.RCIF)
 "8
-[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 137  ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 138  ]
 [; ;isr.c: 9: {
 "9
 {
@@ -1543,12 +1577,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 [; ;isr.c: 13: return;
 "13
-[e $UE 136  ]
+[e $UE 137  ]
 "14
 }
-[e :U 137 ]
+[e :U 138 ]
 [; ;isr.c: 14: }
 [; ;isr.c: 15: }
 "15
-[e :UE 136 ]
+[e :UE 137 ]
 }

@@ -1,72 +1,11 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"69 sysFunc.h
-[s S137 `uc 1 `uc 1 :7 `uc 1 :1 `uc 1 `ui 1 `uc 1 ]
-[n S137 . startByte panelId commandType r_w param endByte ]
-"73 Keypad4x4.h
-[s S134 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
-[n S134 . keyPressIndicator keyPressSound keyLock keyPressed ]
-"3271 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f882.h
-[v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
-"1271
-[s S48 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S48 . PS PSA T0SE T0CS INTEDG nRBPU ]
-"1279
-[s S49 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S49 . PS0 PS1 PS2 ]
-"1270
-[u S47 `S48 1 `S49 1 ]
-[n S47 . . . ]
-"1285
-[v _OPTION_REGbits `VS47 ~T0 @X0 0 e@129 ]
-"1465
-[s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S55 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1464
-[u S54 `S55 1 ]
-[n S54 . . ]
-"1476
-[v _TRISCbits `VS54 ~T0 @X0 0 e@135 ]
-"102 sysFunc.h
-[v _rs485Rx `(v ~T0 @X0 0 ef ]
-"294 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f882.h
-[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S10 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"293
-[u S9 `S10 1 ]
-[n S9 . . ]
-"305
-[v _PORTCbits `VS9 ~T0 @X0 0 e@7 ]
-"50 sysFunc.c
-[c E1716 0 1 2 3 4 .. ]
-[n E1716 . ERR_OK ERR_ID ERR_INC_FRM ERR_STRT ERR_END  ]
-"98 sysFunc.h
-[v _sendButtonInfo `(v ~T0 @X0 0 ef1`uc ]
-"74 sysFunc.c
-[c E1723 0 1 2 3 .. ]
-[n E1723 commandList COMMAND_NULL SEND_BUTTON ACK_BUTTON RESET_KEYPAD  ]
-"100 sysFunc.h
-[v _ackButton `(v ~T0 @X0 0 ef1`ui ]
-"101
-[v _resetKeypad `(v ~T0 @X0 0 ef ]
-"44 uart.h
-[v _USARTWriteString `(v ~T0 @X0 0 ef2`*uc`uc ]
-"124 sysFunc.c
-[c E1559 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 .. ]
-[n E1559 button BUTTON_0 BUTTON_1 BUTTON_2 BUTTON_3 BUTTON_4 BUTTON_5 BUTTON_6 BUTTON_7 BUTTON_8 BUTTON_9 BUTTON_10 BUTTON_11 BUTTON_12 BUTTON_13 BUTTON_14 BUTTON_15 BUTTON_16  ]
-"39 led_control.h
-[s S138 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S138 . bit0 bit1 bit2 bit3 bit4 bit5 bit6 bit7 bit8 bit9 bit10 bit11 bit12 bit13 bit14 bit15 ]
+"1335 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f882.h
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"164
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "46 sysFunc.h
-[s S136 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S136 . bit0 bit1 bit2 bit3 bit4 bit5 bit6 bit7 ]
-"42 uart.h
-[v _USARTInit `(v ~T0 @X0 0 ef1`ui ]
-"80 Keypad4x4.h
-[v _initKeypad `(v ~T0 @X0 0 ef ]
-"82
-[v _getKey `(v ~T0 @X0 0 ef1`*S134 ]
-"51 uart.h
-[v _USARTReadBuffer `(v ~T0 @X0 0 ef2`*uc`ui ]
+[s S135 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S135 . bit0 bit1 bit2 bit3 bit4 bit5 bit6 bit7 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1485,76 +1424,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 192: extern unsigned char __resetbits;
 [; ;pic.h: 193: extern __bit __powerdown;
 [; ;pic.h: 194: extern __bit __timeout;
-[; ;Keypad4x4.h: 54: enum button { BUTTON_0 = 0,
-[; ;Keypad4x4.h: 55: BUTTON_1,
-[; ;Keypad4x4.h: 56: BUTTON_2,
-[; ;Keypad4x4.h: 57: BUTTON_3,
-[; ;Keypad4x4.h: 58: BUTTON_4,
-[; ;Keypad4x4.h: 59: BUTTON_5,
-[; ;Keypad4x4.h: 60: BUTTON_6,
-[; ;Keypad4x4.h: 61: BUTTON_7,
-[; ;Keypad4x4.h: 62: BUTTON_8,
-[; ;Keypad4x4.h: 63: BUTTON_9,
-[; ;Keypad4x4.h: 64: BUTTON_10,
-[; ;Keypad4x4.h: 65: BUTTON_11,
-[; ;Keypad4x4.h: 66: BUTTON_12,
-[; ;Keypad4x4.h: 67: BUTTON_13,
-[; ;Keypad4x4.h: 68: BUTTON_14,
-[; ;Keypad4x4.h: 69: BUTTON_15,
-[; ;Keypad4x4.h: 70: BUTTON_16,
-[; ;Keypad4x4.h: 71: };
-[; ;Keypad4x4.h: 73: typedef struct {
-[; ;Keypad4x4.h: 74: char keyPressIndicator:1;
-[; ;Keypad4x4.h: 75: char keyPressSound:1;
-[; ;Keypad4x4.h: 76: char keyLock:1;
-[; ;Keypad4x4.h: 77: char keyPressed;
-[; ;Keypad4x4.h: 78: }keypadState_t;
-[; ;Keypad4x4.h: 80: void initKeypad(void);
-[; ;Keypad4x4.h: 81: void ackKeyPress();
-[; ;Keypad4x4.h: 82: void getKey(keypadState_t *keypadState);
-[; ;Keypad4x4.h: 83: char buttonPressedIndicator();
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 38: typedef signed long int int32_t;
-[; ;stdint.h: 45: typedef unsigned char uint8_t;
-[; ;stdint.h: 51: typedef unsigned int uint16_t;
-[; ;stdint.h: 67: typedef unsigned long int uint32_t;
-[; ;stdint.h: 75: typedef signed char int_least8_t;
-[; ;stdint.h: 82: typedef signed int int_least16_t;
-[; ;stdint.h: 104: typedef signed long int int_least32_t;
-[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 145: typedef signed char int_fast8_t;
-[; ;stdint.h: 152: typedef signed int int_fast16_t;
-[; ;stdint.h: 174: typedef signed long int int_fast32_t;
-[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 212: typedef int32_t intmax_t;
-[; ;stdint.h: 217: typedef uint32_t uintmax_t;
-[; ;stdint.h: 222: typedef int16_t intptr_t;
-[; ;stdint.h: 227: typedef uint16_t uintptr_t;
-"38 uart.h
-[v _URBuff `Vuc ~T0 @X0 -> 12 `i e ]
-[; ;uart.h: 38: volatile char URBuff[12];
-"39
-[v _UQFront `Vc ~T0 @X0 1 e ]
-[; ;uart.h: 39: volatile int8_t UQFront;
-"40
-[v _UQEnd `Vc ~T0 @X0 1 e ]
-[; ;uart.h: 40: volatile int8_t UQEnd;
-[; ;uart.h: 42: void USARTInit(uint16_t baud_rate);
-[; ;uart.h: 43: void USARTWriteChar(char ch);
-[; ;uart.h: 44: void USARTWriteString(char *str, uint8_t len);
-[; ;uart.h: 45: void USARTWriteLine(char *str, uint8_t len);
-[; ;uart.h: 46: void USARTWriteInt(int16_t val, int8_t field_length);
-[; ;uart.h: 47: void USARTHandleRxInt();
-[; ;uart.h: 48: char USARTReadData();
-[; ;uart.h: 49: uint8_t USARTDataAvailable();
-[; ;uart.h: 50: void USARTGotoNewLine();
-[; ;uart.h: 51: void USARTReadBuffer(char *buff,uint16_t len);
-[; ;uart.h: 52: void USARTFlushBuffer();
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -1585,6 +1454,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 38: typedef signed long int int32_t;
+[; ;stdint.h: 45: typedef unsigned char uint8_t;
+[; ;stdint.h: 51: typedef unsigned int uint16_t;
+[; ;stdint.h: 67: typedef unsigned long int uint32_t;
+[; ;stdint.h: 75: typedef signed char int_least8_t;
+[; ;stdint.h: 82: typedef signed int int_least16_t;
+[; ;stdint.h: 104: typedef signed long int int_least32_t;
+[; ;stdint.h: 111: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 117: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 136: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 145: typedef signed char int_fast8_t;
+[; ;stdint.h: 152: typedef signed int int_fast16_t;
+[; ;stdint.h: 174: typedef signed long int int_fast32_t;
+[; ;stdint.h: 181: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 187: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 206: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 212: typedef int32_t intmax_t;
+[; ;stdint.h: 217: typedef uint32_t uintmax_t;
+[; ;stdint.h: 222: typedef int16_t intptr_t;
+[; ;stdint.h: 227: typedef uint16_t uintptr_t;
 [; ;sysFunc.h: 45: typedef struct
 [; ;sysFunc.h: 46: {
 [; ;sysFunc.h: 47: unsigned int bit0:1;
@@ -1660,693 +1551,85 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;led_control.h: 60: volatile uint16_t led_indication_reg;
 [; ;led_control.h: 84: void init_controller_led_pins();
 [; ;led_control.h: 85: void light_led(uint16_t led_register, uint8_t LED_EN);
-"15 sysFunc.c
-[v _recvCommand `S137 ~T0 @X0 1 e ]
-[; ;sysFunc.c: 15: command_t recvCommand;
+"12 led_control.c
+[v _init_controller_led_pins `(v ~T0 @X0 1 ef ]
+"13
+{
+[; ;led_control.c: 12: void init_controller_led_pins()
+[; ;led_control.c: 13: {
+[e :U _init_controller_led_pins ]
+[f ]
+[; ;led_control.c: 14: TRISA &= 0xE0;
+"14
+[e =& _TRISA -> -> 224 `i `uc ]
+[; ;led_control.c: 16: }
 "16
-[v _keypadState `S134 ~T0 @X0 1 e ]
-[; ;sysFunc.c: 16: keypadState_t keypadState;
-"17
-[v _currentKey `uc ~T0 @X0 1 e ]
-[v _lastKey `uc ~T0 @X0 1 e ]
-[; ;sysFunc.c: 17: uint8_t currentKey, lastKey;
+[e :UE 138 ]
+}
+"18
+[v _light_led `(v ~T0 @X0 1 ef2`ui`uc ]
 "19
-[v _gpioInit `(v ~T0 @X0 1 ef ]
+{
+[; ;led_control.c: 18: void light_led(uint16_t led_register, uint8_t LED_EN)
+[; ;led_control.c: 19: {
+[e :U _light_led ]
+"18
+[v _led_register `ui ~T0 @X0 1 r1 ]
+[v _LED_EN `uc ~T0 @X0 1 r2 ]
+"19
+[f ]
 "20
-{
-[; ;sysFunc.c: 19: void gpioInit()
-[; ;sysFunc.c: 20: {
-[e :U _gpioInit ]
-[f ]
-[; ;sysFunc.c: 21: ANSELH = 0x00;
+[v _i `uc ~T0 @X0 1 a ]
+[; ;led_control.c: 20: uint8_t i;
+[; ;led_control.c: 21: if(LED_EN && led_register)
 "21
-[e = _ANSELH -> -> 0 `i `uc ]
-[; ;sysFunc.c: 22: OPTION_REGbits.nRBPU = 0;
+[e $ ! && != -> _LED_EN `i -> -> -> 0 `i `uc `i != _led_register -> -> 0 `i `ui 140  ]
+[; ;led_control.c: 22: {
 "22
-[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 23: TRISCbits.TRISC5 = 0;
+{
+[; ;led_control.c: 23: ((volatile _io_reg*)&PORTA)->bit4 = 1;
 "23
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 24: rs485Rx();
+[e = . *U -> &U _PORTA `*VS135 4 -> -> 1 `i `uc ]
+[; ;led_control.c: 24: for(i = 0; i < 16; i++)
 "24
-[e ( _rs485Rx ..  ]
-[; ;sysFunc.c: 25: }
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 16 `i 141  ]
+[e $U 142  ]
 "25
-[e :UE 139 ]
-}
+[e :U 141 ]
+[; ;led_control.c: 25: {
+{
+[; ;led_control.c: 26: if(led_register & 0x0001)
+"26
+[e $ ! != & _led_register -> -> 1 `i `ui -> -> 0 `i `ui 144  ]
+[; ;led_control.c: 27: {
 "27
-[v _clockInit `(v ~T0 @X0 1 ef ]
+{
+[; ;led_control.c: 28: PORTA = i;
 "28
-{
-[; ;sysFunc.c: 27: void clockInit()
-[; ;sysFunc.c: 28: {
-[e :U _clockInit ]
-[f ]
-[; ;sysFunc.c: 30: }
-"30
-[e :UE 140 ]
+[e = _PORTA _i ]
+"29
 }
-"32
-[v _rs485Tx `(v ~T0 @X0 1 ef ]
-"33
-{
-[; ;sysFunc.c: 32: void rs485Tx()
-[; ;sysFunc.c: 33: {
-[e :U _rs485Tx ]
-[f ]
-[; ;sysFunc.c: 34: PORTCbits.RC5 = 1;
-"34
-[e = . . _PORTCbits 0 5 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 35: }
-"35
-[e :UE 141 ]
-}
-"37
-[v _rs485Rx `(v ~T0 @X0 1 ef ]
-"38
-{
-[; ;sysFunc.c: 37: void rs485Rx()
-[; ;sysFunc.c: 38: {
-[e :U _rs485Rx ]
-[f ]
-[; ;sysFunc.c: 39: PORTCbits.RC5 = 0;
-"39
-[e = . . _PORTCbits 0 5 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 40: }
-"40
-[e :UE 142 ]
-}
-"49
-[v _sortRxFrame `(E1716 ~T0 @X0 1 ef2`*uc`*S137 ]
-"50
-{
-[; ;sysFunc.c: 49: err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct)
-[; ;sysFunc.c: 50: {
-[e :U _sortRxFrame ]
-"49
-[v _rxBuf `*uc ~T0 @X0 1 r1 ]
-[v _commandStruct `*S137 ~T0 @X0 1 r2 ]
-"50
-[f ]
-"51
-[v _err `E1716 ~T0 @X0 1 a ]
-"52
-[v _command `*S137 ~T0 @X0 1 a ]
-[; ;sysFunc.c: 51: err_t err;
-[; ;sysFunc.c: 52: command_t *command;
-[; ;sysFunc.c: 53: command = rxBuf;
-"53
-[e = _command -> _rxBuf `*S137 ]
-[; ;sysFunc.c: 54: if(command->startByte == 0xFF)
-"54
-[e $ ! == -> . *U _command 0 `i -> 255 `i 144  ]
-[; ;sysFunc.c: 55: if(command->panelId == 0x01)
-"55
-[e $ ! == -> . *U _command 1 `i -> 1 `i 145  ]
-[; ;sysFunc.c: 56: if(command->endByte == 0xFE)
-"56
-[e $ ! == -> . *U _command 5 `i -> 254 `i 146  ]
-[; ;sysFunc.c: 57: {
-"57
-{
-[; ;sysFunc.c: 58: commandStruct->commandType = command->commandType;
-"58
-[e = . *U _commandStruct 2 . *U _command 2 ]
-[; ;sysFunc.c: 59: commandStruct->param = command->param;
-"59
-[e = . *U _commandStruct 4 . *U _command 4 ]
-[; ;sysFunc.c: 60: err = ERR_OK;
-"60
-[e = _err . `E1716 0 ]
-[; ;sysFunc.c: 61: return err;
-"61
-[e ) _err ]
-[e $UE 143  ]
-"62
-}
-[; ;sysFunc.c: 62: }
-[e $U 147  ]
-"63
-[e :U 146 ]
-[; ;sysFunc.c: 63: else { err = ERR_END; return err;}
-{
-[e = _err . `E1716 4 ]
-[e ) _err ]
-[e $UE 143  ]
-}
-[e :U 147 ]
-[e $U 148  ]
-"64
-[e :U 145 ]
-[; ;sysFunc.c: 64: else { err = ERR_ID; return err;}
-{
-[e = _err . `E1716 1 ]
-[e ) _err ]
-[e $UE 143  ]
-}
-[e :U 148 ]
-[e $U 149  ]
-"65
 [e :U 144 ]
-[; ;sysFunc.c: 65: else { err = ERR_STRT; return err;}
-{
-[e = _err . `E1716 3 ]
-[e ) _err ]
-[e $UE 143  ]
+[; ;led_control.c: 29: }
+[; ;led_control.c: 31: led_register >> 1;
+"31
+[e >> _led_register -> 1 `i ]
+"32
 }
-[e :U 149 ]
-[; ;sysFunc.c: 66: }
-"66
-[e :UE 143 ]
+"24
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 16 `i 141  ]
+[e :U 142 ]
+"32
 }
-"68
-[v _runProtocol `(v ~T0 @X0 1 ef1`*S137 ]
-"69
-{
-[; ;sysFunc.c: 68: void runProtocol(command_t *commandRecv)
-[; ;sysFunc.c: 69: {
-[e :U _runProtocol ]
-"68
-[v _commandRecv `*S137 ~T0 @X0 1 r1 ]
-"69
-[f ]
-"70
-[v _command `uc ~T0 @X0 1 a ]
-[; ;sysFunc.c: 70: uint8_t command = commandRecv->commandType;
-[e = _command . *U _commandRecv 2 ]
-[; ;sysFunc.c: 71: switch(command){
-"71
-[e $U 152  ]
-{
-[; ;sysFunc.c: 72: case SEND_BUTTON:
-"72
-[e :U 153 ]
-[; ;sysFunc.c: 73: sendButtonInfo(lastKey);
-"73
-[e ( _sendButtonInfo (1 _lastKey ]
-[; ;sysFunc.c: 74: commandRecv->commandType = COMMAND_NULL;
-"74
-[e = . *U _commandRecv 2 -> . `E1723 0 `uc ]
-[; ;sysFunc.c: 75: break;
-"75
-[e $U 151  ]
-[; ;sysFunc.c: 77: case ACK_BUTTON:
-"77
-[e :U 154 ]
-[; ;sysFunc.c: 78: ackButton(commandRecv->param);
-"78
-[e ( _ackButton (1 . *U _commandRecv 4 ]
-[; ;sysFunc.c: 79: commandRecv->commandType = COMMAND_NULL;
-"79
-[e = . *U _commandRecv 2 -> . `E1723 0 `uc ]
-[; ;sysFunc.c: 80: break;
-"80
-[e $U 151  ]
-[; ;sysFunc.c: 82: case RESET_KEYPAD:
-"82
-[e :U 155 ]
-[; ;sysFunc.c: 83: resetKeypad();
-"83
-[e ( _resetKeypad ..  ]
-[; ;sysFunc.c: 84: commandRecv->commandType = COMMAND_NULL;
-"84
-[e = . *U _commandRecv 2 -> . `E1723 0 `uc ]
-[; ;sysFunc.c: 85: break;
-"85
-[e $U 151  ]
-[; ;sysFunc.c: 87: default:
-"87
-[e :U 156 ]
-[; ;sysFunc.c: 88: break;
-"88
-[e $U 151  ]
-"89
+"33
 }
-[; ;sysFunc.c: 89: }
-[e $U 151  ]
-"71
-[e :U 152 ]
-[e [\ _command , $ -> . `E1723 1 `uc 153
- , $ -> . `E1723 2 `uc 154
- , $ -> . `E1723 3 `uc 155
- 156 ]
-"89
-[e :U 151 ]
-[; ;sysFunc.c: 90: }
-"90
-[e :UE 150 ]
-}
-"92
-[v _sendButtonInfo `(v ~T0 @X0 1 ef1`uc ]
-"93
-{
-[; ;sysFunc.c: 92: void sendButtonInfo(uint8_t button)
-[; ;sysFunc.c: 93: {
-[e :U _sendButtonInfo ]
-"92
-[v _button `uc ~T0 @X0 1 r1 ]
-"93
-[f ]
-"94
-[v _buffer `uc ~T0 @X0 -> 6 `i a ]
-[; ;sysFunc.c: 94: uint8_t buffer[6];
-[; ;sysFunc.c: 95: buffer[0] = 0xFF;
-"95
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 255 `i `uc ]
-[; ;sysFunc.c: 96: buffer[1] = 0x01;
-"96
-[e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 1 `i `uc ]
-[; ;sysFunc.c: 97: buffer[2] = SEND_BUTTON;
-"97
-[e = *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E1723 1 `uc ]
-[; ;sysFunc.c: 98: buffer[3] = 0x00;
-"98
-[e = *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
-[; ;sysFunc.c: 99: buffer[4] = button;
-"99
-[e = *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux _button ]
-[; ;sysFunc.c: 100: buffer[5] = 0xFE;
-"100
-[e = *U + &U _buffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 254 `i `uc ]
-[; ;sysFunc.c: 102: rs485Tx();
-"102
-[e ( _rs485Tx ..  ]
-[; ;sysFunc.c: 103: USARTWriteString(buffer, sizeof(buffer));
-"103
-[e ( _USARTWriteString (2 , &U _buffer -> -> # _buffer `ui `uc ]
-[; ;sysFunc.c: 104: rs485Rx();
-"104
-[e ( _rs485Rx ..  ]
-[; ;sysFunc.c: 105: }
-"105
-[e :UE 157 ]
-}
-"107
-[v _ackButton `(v ~T0 @X0 1 ef1`ui ]
-"108
-{
-[; ;sysFunc.c: 107: void ackButton(uint16_t valid_indicator)
-[; ;sysFunc.c: 108: {
-[e :U _ackButton ]
-"107
-[v _valid_indicator `ui ~T0 @X0 1 r1 ]
-"108
-[f ]
-"109
-[v _buffer `uc ~T0 @X0 -> 6 `i a ]
-[; ;sysFunc.c: 109: uint8_t buffer[6];
-[; ;sysFunc.c: 111: buffer[0] = 0xFF;
-"111
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 255 `i `uc ]
-[; ;sysFunc.c: 112: buffer[1] = 0x01;
-"112
-[e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 1 `i `uc ]
-[; ;sysFunc.c: 113: buffer[2] = ACK_BUTTON;
-"113
-[e = *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E1723 2 `uc ]
-[; ;sysFunc.c: 114: buffer[3] = 0x00;
-"114
-[e = *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
-[; ;sysFunc.c: 115: buffer[4] = 0x00;
-"115
-[e = *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
-[; ;sysFunc.c: 116: buffer[5] = 0xFE;
-"116
-[e = *U + &U _buffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 254 `i `uc ]
-[; ;sysFunc.c: 118: rs485Tx();
-"118
-[e ( _rs485Tx ..  ]
-[; ;sysFunc.c: 119: USARTWriteString(buffer, 6);
-"119
-[e ( _USARTWriteString (2 , &U _buffer -> -> 6 `i `uc ]
-[; ;sysFunc.c: 120: rs485Rx();
-"120
-[e ( _rs485Rx ..  ]
-[; ;sysFunc.c: 122: keypadState.keyLock = 0;
-"122
-[e = . _keypadState 2 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 123: keypadState.keyPressIndicator = 0;
-"123
-[e = . _keypadState 0 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 124: keypadState.keyPressed = BUTTON_0;
-"124
-[e = . _keypadState 3 -> . `E1559 0 `uc ]
-[; ;sysFunc.c: 126: if(valid_indicator)
-"126
-[e $ ! != _valid_indicator -> -> 0 `i `ui 159  ]
-[; ;sysFunc.c: 127: {
-"127
-{
-[; ;sysFunc.c: 128: switch(lastKey)
-"128
-[e $U 161  ]
-[; ;sysFunc.c: 129: {
-"129
-{
-[; ;sysFunc.c: 130: case BUTTON_1:
-"130
-[e :U 162 ]
-[; ;sysFunc.c: 131: ((volatile _io16_reg*)&led_indication_reg)->bit0 = 1;
-"131
-[e = . *U -> &U _led_indication_reg `*VS138 0 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 132: break;
-"132
-[e $U 160  ]
-[; ;sysFunc.c: 134: case BUTTON_2:
-"134
-[e :U 163 ]
-[; ;sysFunc.c: 135: ((volatile _io16_reg*)&led_indication_reg)->bit1 = 1;
-"135
-[e = . *U -> &U _led_indication_reg `*VS138 1 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 136: break;
-"136
-[e $U 160  ]
-[; ;sysFunc.c: 138: case BUTTON_3:
-"138
-[e :U 164 ]
-[; ;sysFunc.c: 139: ((volatile _io16_reg*)&led_indication_reg)->bit2 = 1;
-"139
-[e = . *U -> &U _led_indication_reg `*VS138 2 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 140: break;
-"140
-[e $U 160  ]
-[; ;sysFunc.c: 142: case BUTTON_4:
-"142
-[e :U 165 ]
-[; ;sysFunc.c: 143: ((volatile _io16_reg*)&led_indication_reg)->bit3 = 1;
-"143
-[e = . *U -> &U _led_indication_reg `*VS138 3 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 144: break;
-"144
-[e $U 160  ]
-[; ;sysFunc.c: 146: case BUTTON_5:
-"146
-[e :U 166 ]
-[; ;sysFunc.c: 147: ((volatile _io16_reg*)&led_indication_reg)->bit4 = 1;
-"147
-[e = . *U -> &U _led_indication_reg `*VS138 4 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 148: break;
-"148
-[e $U 160  ]
-[; ;sysFunc.c: 150: case BUTTON_6:
-"150
-[e :U 167 ]
-[; ;sysFunc.c: 151: ((volatile _io16_reg*)&led_indication_reg)->bit5 = 1;
-"151
-[e = . *U -> &U _led_indication_reg `*VS138 5 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 152: break;
-"152
-[e $U 160  ]
-[; ;sysFunc.c: 154: case BUTTON_7:
-"154
-[e :U 168 ]
-[; ;sysFunc.c: 155: ((volatile _io16_reg*)&led_indication_reg)->bit6 = 1;
-"155
-[e = . *U -> &U _led_indication_reg `*VS138 6 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 156: break;
-"156
-[e $U 160  ]
-[; ;sysFunc.c: 158: case BUTTON_8:
-"158
-[e :U 169 ]
-[; ;sysFunc.c: 159: ((volatile _io16_reg*)&led_indication_reg)->bit7 = 1;
-"159
-[e = . *U -> &U _led_indication_reg `*VS138 7 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 160: break;
-"160
-[e $U 160  ]
-[; ;sysFunc.c: 162: case BUTTON_9:
-"162
-[e :U 170 ]
-[; ;sysFunc.c: 163: ((volatile _io16_reg*)&led_indication_reg)->bit8 = 1;
-"163
-[e = . *U -> &U _led_indication_reg `*VS138 8 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 164: break;
-"164
-[e $U 160  ]
-[; ;sysFunc.c: 166: case BUTTON_10:
-"166
-[e :U 171 ]
-[; ;sysFunc.c: 167: ((volatile _io16_reg*)&led_indication_reg)->bit9 = 1;
-"167
-[e = . *U -> &U _led_indication_reg `*VS138 9 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 168: break;
-"168
-[e $U 160  ]
-[; ;sysFunc.c: 170: case BUTTON_11:
-"170
-[e :U 172 ]
-[; ;sysFunc.c: 171: ((volatile _io16_reg*)&led_indication_reg)->bit10 = 1;
-"171
-[e = . *U -> &U _led_indication_reg `*VS138 10 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 172: break;
-"172
-[e $U 160  ]
-[; ;sysFunc.c: 174: case BUTTON_12:
-"174
-[e :U 173 ]
-[; ;sysFunc.c: 175: ((volatile _io16_reg*)&led_indication_reg)->bit11 = 1;
-"175
-[e = . *U -> &U _led_indication_reg `*VS138 11 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 176: break;
-"176
-[e $U 160  ]
-[; ;sysFunc.c: 178: case BUTTON_13:
-"178
-[e :U 174 ]
-[; ;sysFunc.c: 179: ((volatile _io16_reg*)&led_indication_reg)->bit12 = 1;
-"179
-[e = . *U -> &U _led_indication_reg `*VS138 12 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 180: break;
-"180
-[e $U 160  ]
-[; ;sysFunc.c: 182: case BUTTON_14:
-"182
-[e :U 175 ]
-[; ;sysFunc.c: 183: ((volatile _io16_reg*)&led_indication_reg)->bit13 = 1;
-"183
-[e = . *U -> &U _led_indication_reg `*VS138 13 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 184: break;
-"184
-[e $U 160  ]
-[; ;sysFunc.c: 186: case BUTTON_15:
-"186
-[e :U 176 ]
-[; ;sysFunc.c: 187: ((volatile _io16_reg*)&led_indication_reg)->bit14 = 1;
-"187
-[e = . *U -> &U _led_indication_reg `*VS138 14 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 188: break;
-"188
-[e $U 160  ]
-[; ;sysFunc.c: 190: case BUTTON_16:
-"190
-[e :U 177 ]
-[; ;sysFunc.c: 191: ((volatile _io16_reg*)&led_indication_reg)->bit15 = 1;
-"191
-[e = . *U -> &U _led_indication_reg `*VS138 15 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 192: break;
-"192
-[e $U 160  ]
-"193
-}
-[; ;sysFunc.c: 193: }
-[e $U 160  ]
-"128
-[e :U 161 ]
-[e [\ _lastKey , $ -> . `E1559 1 `uc 162
- , $ -> . `E1559 2 `uc 163
- , $ -> . `E1559 3 `uc 164
- , $ -> . `E1559 4 `uc 165
- , $ -> . `E1559 5 `uc 166
- , $ -> . `E1559 6 `uc 167
- , $ -> . `E1559 7 `uc 168
- , $ -> . `E1559 8 `uc 169
- , $ -> . `E1559 9 `uc 170
- , $ -> . `E1559 10 `uc 171
- , $ -> . `E1559 11 `uc 172
- , $ -> . `E1559 12 `uc 173
- , $ -> . `E1559 13 `uc 174
- , $ -> . `E1559 14 `uc 175
- , $ -> . `E1559 15 `uc 176
- , $ -> . `E1559 16 `uc 177
- 160 ]
-"193
-[e :U 160 ]
-"194
-}
-[e :U 159 ]
-[; ;sysFunc.c: 194: }
-[; ;sysFunc.c: 196: lastKey = BUTTON_0;
-"196
-[e = _lastKey -> . `E1559 0 `uc ]
-[; ;sysFunc.c: 198: }
-"198
-[e :UE 158 ]
-}
-"200
-[v _resetKeypad `(v ~T0 @X0 1 ef ]
-"201
-{
-[; ;sysFunc.c: 200: void resetKeypad()
-[; ;sysFunc.c: 201: {
-[e :U _resetKeypad ]
-[f ]
-"202
-[v _buffer `uc ~T0 @X0 -> 6 `i a ]
-[; ;sysFunc.c: 202: uint8_t buffer[6];
-[; ;sysFunc.c: 204: buffer[0] = 0xFF;
-"204
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 255 `i `uc ]
-[; ;sysFunc.c: 205: buffer[1] = 0x01;
-"205
-[e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 1 `i `uc ]
-[; ;sysFunc.c: 206: buffer[2] = RESET_KEYPAD;
-"206
-[e = *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E1723 3 `uc ]
-[; ;sysFunc.c: 207: buffer[3] = 0x00;
-"207
-[e = *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
-[; ;sysFunc.c: 208: buffer[4] = 0x00;
-"208
-[e = *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
-[; ;sysFunc.c: 209: buffer[5] = 0xFE;
-"209
-[e = *U + &U _buffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 254 `i `uc ]
-[; ;sysFunc.c: 211: rs485Tx();
-"211
-[e ( _rs485Tx ..  ]
-[; ;sysFunc.c: 212: USARTWriteString(buffer, 6);
-"212
-[e ( _USARTWriteString (2 , &U _buffer -> -> 6 `i `uc ]
-[; ;sysFunc.c: 213: rs485Rx();
-"213
-[e ( _rs485Rx ..  ]
-[; ;sysFunc.c: 215: keypadState.keyLock = 0;
-"215
-[e = . _keypadState 2 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 216: keypadState.keyPressIndicator = 0;
-"216
-[e = . _keypadState 0 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 217: keypadState.keyPressed = BUTTON_0;
-"217
-[e = . _keypadState 3 -> . `E1559 0 `uc ]
-[; ;sysFunc.c: 218: lastKey = BUTTON_0;
-"218
-[e = _lastKey -> . `E1559 0 `uc ]
-[; ;sysFunc.c: 220: ((volatile _io_reg*)&status_register)->bit0 = 0;
-"220
-[e = . *U -> &U _status_register `*VS136 0 -> -> 0 `i `uc ]
-[; ;sysFunc.c: 221: }
-"221
-[e :UE 178 ]
-}
-"223
-[v _controllerInit `(v ~T0 @X0 1 ef ]
-"224
-{
-[; ;sysFunc.c: 223: void controllerInit(void)
-[; ;sysFunc.c: 224: {
-[e :U _controllerInit ]
-[f ]
-[; ;sysFunc.c: 225: gpioInit();
-"225
-[e ( _gpioInit ..  ]
-[; ;sysFunc.c: 226: USARTInit(9600);
-"226
-[e ( _USARTInit (1 -> -> 9600 `i `ui ]
-[; ;sysFunc.c: 227: initKeypad();
-"227
-[e ( _initKeypad ..  ]
-[; ;sysFunc.c: 229: return;
-"229
-[e $UE 179  ]
-[; ;sysFunc.c: 230: }
-"230
-[e :UE 179 ]
-}
-"232
-[v _scanKeypad `(uc ~T0 @X0 1 ef ]
-"233
-{
-[; ;sysFunc.c: 232: uint8_t scanKeypad()
-[; ;sysFunc.c: 233: {
-[e :U _scanKeypad ]
-[f ]
-[; ;sysFunc.c: 234: if(!keypadState.keyPressIndicator && !keypadState.keyLock)
-"234
-[e $ ! && ! != -> . _keypadState 0 `i -> -> -> 0 `i `uc `i ! != -> . _keypadState 2 `i -> -> -> 0 `i `uc `i 181  ]
-[; ;sysFunc.c: 235: {
-"235
-{
-[; ;sysFunc.c: 236: getKey(&keypadState);
-"236
-[e ( _getKey (1 &U _keypadState ]
-[; ;sysFunc.c: 238: if(keypadState.keyPressIndicator)
-"238
-[e $ ! != -> . _keypadState 0 `i -> -> -> 0 `i `uc `i 182  ]
-[; ;sysFunc.c: 239: {
-"239
-{
-[; ;sysFunc.c: 240: lastKey = keypadState.keyPressed;
-"240
-[e = _lastKey . _keypadState 3 ]
-[; ;sysFunc.c: 241: keypadState.keyLock = 1;
-"241
-[e = . _keypadState 2 -> -> 1 `i `uc ]
-[; ;sysFunc.c: 242: return 0;
-"242
-[e ) -> -> 0 `i `uc ]
-[e $UE 180  ]
-"243
-}
-[e :U 182 ]
-"244
-}
-[e :U 181 ]
-[; ;sysFunc.c: 243: }
-[; ;sysFunc.c: 244: }
-[; ;sysFunc.c: 245: return 1;
-"245
-[e ) -> -> 1 `i `uc ]
-[e $UE 180  ]
-[; ;sysFunc.c: 246: }
-"246
-[e :UE 180 ]
-}
-"248
-[v _checkCommandRx `(v ~T0 @X0 1 ef ]
-"249
-{
-[; ;sysFunc.c: 248: void checkCommandRx()
-[; ;sysFunc.c: 249: {
-[e :U _checkCommandRx ]
-[f ]
-"250
-[v _buffer `uc ~T0 @X0 -> 6 `i a ]
-[; ;sysFunc.c: 250: uint8_t buffer[6];
-[; ;sysFunc.c: 252: if(rxCount >= (12 / 2))
-"252
-[e $ ! >= -> _rxCount `i / -> 12 `i -> 2 `i 184  ]
-[; ;sysFunc.c: 253: {
-"253
-{
-[; ;sysFunc.c: 254: USARTReadBuffer(buffer, sizeof(buffer));
-"254
-[e ( _USARTReadBuffer (2 , &U _buffer -> # _buffer `ui ]
-[; ;sysFunc.c: 255: rxCount -= (12 / 2);
-"255
-[e =- _rxCount -> / -> 12 `i -> 2 `i `uc ]
-[; ;sysFunc.c: 256: sortRxFrame(buffer, &recvCommand);
-"256
-[e ( _sortRxFrame (2 , &U _buffer &U _recvCommand ]
-[; ;sysFunc.c: 257: runProtocol(&recvCommand);
-"257
-[e ( _runProtocol (1 &U _recvCommand ]
-"258
-}
-[e :U 184 ]
-[; ;sysFunc.c: 258: }
-[; ;sysFunc.c: 259: }
-"259
-[e :UE 183 ]
+[e :U 140 ]
+[; ;led_control.c: 32: }
+[; ;led_control.c: 33: }
+[; ;led_control.c: 34: }
+"34
+[e :UE 139 ]
 }

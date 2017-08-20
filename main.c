@@ -25,8 +25,9 @@
 
 #include <xc.h>
 #include "uart.h"
-#include "keypad4x4.h"
+#include "Keypad4x4.h"
 #include "sysFunc.h"
+#include "led_control.h"
 
 //static uint8_t currentKey, lastKey;
 
@@ -35,11 +36,11 @@ void main()
 {
     controllerInit();
     
-/*  Test codes here */
+/*  Test codes here  */
     rs485Tx();
     USARTWriteLine("Serial OK!", 10);
     rs485Rx();
-    
+  
 
 
 /*                  */    
@@ -47,5 +48,7 @@ void main()
     {
         checkCommandRx();
         scanKeypad();
+        light_led(led_indication_reg, (status_register & 0x01));
+        
     }
 }

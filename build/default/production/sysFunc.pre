@@ -2138,7 +2138,70 @@ void USARTGotoNewLine();
 void USARTReadBuffer(char *buff,uint16_t len);
 void USARTFlushBuffer();
 
-# 40 "sysFunc.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
+typedef unsigned size_t;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 45 "sysFunc.h"
 typedef struct
 {
 unsigned int bit0:1;
@@ -2151,8 +2214,13 @@ unsigned int bit6:1;
 unsigned int bit7:1;
 } _io_reg;
 
-# 59
-typedef struct {
+# 64
+uint8_t status_register;
+
+
+
+typedef struct
+{
 uint8_t startByte;
 uint8_t panelId;
 uint8_t commandType:7;
@@ -2183,7 +2251,7 @@ void clockInit();
 err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
 void sendButtonInfo(uint8_t button);
 void runProtocol(command_t *commandRecv);
-void ackButton();
+void ackButton(uint16_t valid_indicator);
 void resetKeypad();
 void rs485Rx();
 void rs485Tx();
@@ -2191,7 +2259,36 @@ void controllerInit(void);
 uint8_t scanKeypad();
 void checkCommandRx();
 
-# 14 "sysFunc.c"
+# 38 "led_control.h"
+typedef struct
+{
+uint16_t bit0:1;
+uint16_t bit1:1;
+uint16_t bit2:1;
+uint16_t bit3:1;
+uint16_t bit4:1;
+uint16_t bit5:1;
+uint16_t bit6:1;
+uint16_t bit7:1;
+uint16_t bit8:1;
+uint16_t bit9:1;
+uint16_t bit10:1;
+uint16_t bit11:1;
+uint16_t bit12:1;
+uint16_t bit13:1;
+uint16_t bit14:1;
+uint16_t bit15:1;
+} _io16_reg;
+
+
+
+volatile uint16_t led_indication_reg;
+
+# 84
+void init_controller_led_pins();
+void light_led(uint16_t led_register, uint8_t LED_EN);
+
+# 15 "sysFunc.c"
 command_t recvCommand;
 keypadState_t keypadState;
 uint8_t currentKey, lastKey;
@@ -2219,7 +2316,7 @@ void rs485Rx()
 PORTCbits.RC5 = 0;
 }
 
-# 48
+# 49
 err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct)
 {
 err_t err;
@@ -2249,7 +2346,7 @@ commandRecv->commandType = COMMAND_NULL;
 break;
 
 case ACK_BUTTON:
-ackButton();
+ackButton(commandRecv->param);
 commandRecv->commandType = COMMAND_NULL;
 break;
 
@@ -2278,7 +2375,7 @@ USARTWriteString(buffer, sizeof(buffer));
 rs485Rx();
 }
 
-void ackButton()
+void ackButton(uint16_t valid_indicator)
 {
 uint8_t buffer[6];
 
@@ -2295,8 +2392,80 @@ rs485Rx();
 
 keypadState.keyLock = 0;
 keypadState.keyPressIndicator = 0;
-lastKey = BUTTON_0;
 keypadState.keyPressed = BUTTON_0;
+
+if(valid_indicator)
+{
+switch(lastKey)
+{
+case BUTTON_1:
+((volatile _io16_reg*)&led_indication_reg)->bit0 = 1;
+break;
+
+case BUTTON_2:
+((volatile _io16_reg*)&led_indication_reg)->bit1 = 1;
+break;
+
+case BUTTON_3:
+((volatile _io16_reg*)&led_indication_reg)->bit2 = 1;
+break;
+
+case BUTTON_4:
+((volatile _io16_reg*)&led_indication_reg)->bit3 = 1;
+break;
+
+case BUTTON_5:
+((volatile _io16_reg*)&led_indication_reg)->bit4 = 1;
+break;
+
+case BUTTON_6:
+((volatile _io16_reg*)&led_indication_reg)->bit5 = 1;
+break;
+
+case BUTTON_7:
+((volatile _io16_reg*)&led_indication_reg)->bit6 = 1;
+break;
+
+case BUTTON_8:
+((volatile _io16_reg*)&led_indication_reg)->bit7 = 1;
+break;
+
+case BUTTON_9:
+((volatile _io16_reg*)&led_indication_reg)->bit8 = 1;
+break;
+
+case BUTTON_10:
+((volatile _io16_reg*)&led_indication_reg)->bit9 = 1;
+break;
+
+case BUTTON_11:
+((volatile _io16_reg*)&led_indication_reg)->bit10 = 1;
+break;
+
+case BUTTON_12:
+((volatile _io16_reg*)&led_indication_reg)->bit11 = 1;
+break;
+
+case BUTTON_13:
+((volatile _io16_reg*)&led_indication_reg)->bit12 = 1;
+break;
+
+case BUTTON_14:
+((volatile _io16_reg*)&led_indication_reg)->bit13 = 1;
+break;
+
+case BUTTON_15:
+((volatile _io16_reg*)&led_indication_reg)->bit14 = 1;
+break;
+
+case BUTTON_16:
+((volatile _io16_reg*)&led_indication_reg)->bit15 = 1;
+break;
+}
+}
+
+lastKey = BUTTON_0;
+
 }
 
 void resetKeypad()
@@ -2318,6 +2487,8 @@ keypadState.keyLock = 0;
 keypadState.keyPressIndicator = 0;
 keypadState.keyPressed = BUTTON_0;
 lastKey = BUTTON_0;
+
+((volatile _io_reg*)&status_register)->bit0 = 0;
 }
 
 void controllerInit(void)

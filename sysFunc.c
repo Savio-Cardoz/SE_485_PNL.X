@@ -10,6 +10,7 @@
 #include "Keypad4x4.h"
 #include "uart.h"
 #include "sysFunc.h"
+#include "led_control.h"
 
 command_t recvCommand;
 keypadState_t keypadState;
@@ -17,9 +18,9 @@ uint8_t currentKey, lastKey;
 
 void gpioInit()
 {
-    ANSELH = 0x00;     // Pins of the Matrix Keypad are configured as digital io's
-    OPTION_REGbits.nRBPU = 0;
-    TRISCbits.TRISC5 = 0;  // Output to the RS485 Data direction control pin
+    ANSELH = 0x00;                  // Pins of the Matrix Keypad are configured as digital io's
+    OPTION_REGbits.nRBPU = 0;       // Pull ups activated
+    TRISCbits.TRISC5 = 0;           // Output to the RS485 Data direction control pin
     rs485Rx();
 }
 
@@ -74,7 +75,7 @@ void runProtocol(command_t *commandRecv)
             break;
             
         case ACK_BUTTON:
-            ackButton();
+            ackButton(commandRecv->param);
             commandRecv->commandType = COMMAND_NULL;
             break;
             
@@ -103,7 +104,7 @@ void sendButtonInfo(uint8_t button)
     rs485Rx();
 }
 
-void ackButton()
+void ackButton(uint16_t valid_indicator)
 {
     uint8_t buffer[6];
     
@@ -120,8 +121,80 @@ void ackButton()
     
     keypadState.keyLock = 0;
     keypadState.keyPressIndicator = 0;
-    lastKey = BUTTON_0;
     keypadState.keyPressed = BUTTON_0;
+    
+    if(valid_indicator)
+    {
+        switch(lastKey)
+        {
+            case BUTTON_1:
+                LED1 = ON;
+                break;
+                
+            case BUTTON_2:
+                LED2 = ON;
+                break;
+                
+            case BUTTON_3:
+                LED3 = ON;
+                break;
+                
+            case BUTTON_4:
+                LED4 = ON;
+                break;
+                
+            case BUTTON_5:
+                LED5 = ON;
+                break;
+                
+            case BUTTON_6:
+                LED6 = ON;
+                break;
+                
+            case BUTTON_7:
+                LED7 = ON;
+                break;
+                
+            case BUTTON_8:
+                LED8 = ON;
+                break;
+                
+            case BUTTON_9:
+                LED9 = ON;
+                break;
+                
+            case BUTTON_10:
+                LED10 = ON;
+                break;
+                
+            case BUTTON_11:
+                LED11 = ON;
+                break;
+                
+            case BUTTON_12:
+                LED12 = ON;
+                break;
+                
+            case BUTTON_13:
+                LED13 = ON;
+                break;
+                
+            case BUTTON_14:
+                LED14 = ON;
+                break;
+                
+            case BUTTON_15:
+                LED15 = ON;
+                break;
+                
+            case BUTTON_16:
+                LED16 = ON;
+                break;
+        }
+    }
+    
+    lastKey = BUTTON_0;
+
 }
 
 void resetKeypad()
@@ -143,6 +216,8 @@ void resetKeypad()
     keypadState.keyPressIndicator = 0;
     keypadState.keyPressed = BUTTON_0;
     lastKey = BUTTON_0;
+    
+    LED_ON = OFF;
 }
 
 void controllerInit(void) 

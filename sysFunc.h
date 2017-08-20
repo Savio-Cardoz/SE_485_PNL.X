@@ -32,10 +32,15 @@
 #define	SYSFUNC_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdio.h>
+#include <stdint.h>
 
 #define STARTBYTE 0xFF
 #define ENDBYTE 0xFE
 #define PANELID 0x01
+
+#define ON 1
+#define OFF 0
 
 typedef struct			// Using to access individual bits/pins of a register/port
 {
@@ -56,7 +61,12 @@ typedef struct			// Using to access individual bits/pins of a register/port
 #define CHECKBIT(ADDRESS,BIT) (ADDRESS & (1<<BIT))
 #define BIT_FLIP(ADDRESS,BIT) ((ADDRESS)^=(BIT))
 
-typedef struct {
+uint8_t status_register;
+
+#define LED_ON REGISTER_BIT(status_register, 0)
+
+typedef struct 
+{
     uint8_t startByte;
     uint8_t panelId;
     uint8_t commandType:7;
@@ -87,7 +97,7 @@ void clockInit();
 err_t sortRxFrame(uint8_t *rxBuf, command_t *commandStruct);
 void sendButtonInfo(uint8_t button);
 void runProtocol(command_t *commandRecv);
-void ackButton();
+void ackButton(uint16_t valid_indicator);
 void resetKeypad();
 void rs485Rx();
 void rs485Tx();
