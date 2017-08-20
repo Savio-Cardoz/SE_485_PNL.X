@@ -1,5 +1,9 @@
 debug/*
 
+old_code/*
+
+*.csv
+
 # Prerequisites
 *.d
 
